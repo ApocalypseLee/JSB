@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="ProjectModuleManager">
+    <modules>
+      <module fileurl="file://$PROJECT_DIR$/.idea/modules/proj.android-studio.iml" filepath="$PROJECT_DIR$/.idea/modules/proj.android-studio.iml" />
+      <module fileurl="file://$PROJECT_DIR$/.idea/modules/game/proj.android-studio.game.iml" filepath="$PROJECT_DIR$/.idea/modules/game/proj.android-studio.game.iml" />
+      <module fileurl="file://$PROJECT_DIR$/.idea/modules/instantapp/proj.android-studio.instantapp.iml" filepath="$PROJECT_DIR$/.idea/modules/instantapp/proj.android-studio.instantapp.iml" />
+      <module fileurl="file://$PROJECT_DIR$/.idea/modules/1825976782/proj.android-studio.libcocos2dx.iml" filepath="$PROJECT_DIR$/.idea/modules/1825976782/proj.android-studio.libcocos2dx.iml" />
+      <module fileurl="file://$PROJECT_DIR$/.idea/modules/app/proj.android-studio.pinball.iml" filepath="$PROJECT_DIR$/.idea/modules/app/proj.android-studio.pinball.iml" />
+    </modules>
+  </component>
+</project>

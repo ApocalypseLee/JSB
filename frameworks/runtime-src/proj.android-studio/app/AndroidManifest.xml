@@ -1,0 +1,222 @@
+<?xml version="1.0" encoding="utf-8"?>
+<manifest xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    package="org.pinball.games"
+    android:installLocation="auto">
+
+    <uses-feature android:glEsVersion="0x00020000" />
+
+    <!--必要权限-->
+    <uses-permission android:name="android.permission.INTERNET" />
+
+    <!--可选权限-->
+    <uses-permission android:name="android.permission.READ_PHONE_STATE" />
+    <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" />
+    <uses-permission android:name="android.permission.READ_PRIVILEGED_PHONE_STATE"
+        tools:ignore="ProtectedPermissions" />
+    <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE" />
+    <uses-permission android:name="android.permission.ACCESS_WIFI_STATE" />
+    <uses-permission android:name="android.permission.ACCESS_COARSE_LOCATION" />
+    <uses-permission android:name="android.permission.REQUEST_INSTALL_PACKAGES" />
+    <!--suppress DeprecatedClassUsageInspection -->
+    <uses-permission android:name="android.permission.GET_TASKS" />
+
+    <!-- 熄屏后唤醒需要加此权限，并且需要保证开启android.permission.WAKE_LOCK-->
+    <uses-permission android:name="android.permission.DISABLE_KEYGUARD" />
+    <!-- 用于横幅的全屏通知权限 -->
+    <uses-permission android:name="android.permission.USE_FULL_SCREEN_INTENT" />
+    <!-- 用于弹出悬浮窗的后台权限 -->
+    <uses-permission android:name="android.permission.FOREGROUND_SERVICE" />
+    <!-- 用于弹出悬浮窗的悬浮窗权限 -->
+    <uses-permission android:name="android.permission.SYSTEM_ALERT_WINDOW" />
+    <!-- 防止进程被杀的电量优化白名单 -->
+    <uses-permission android:name="android.permission.REQUEST_IGNORE_BATTERY_OPTIMIZATIONS" />
+
+    <!--可选，穿山甲提供“获取地理位置权限”和“不给予地理位置权限，开发者传入地理位置参数”两种方式上报用户位置，两种方式均可不选，添加位置权限或参数将帮助投放定位广告-->
+    <!--请注意：无论通过何种方式提供给穿山甲用户地理位置，均需向用户声明地理位置权限将应用于穿山甲广告投放，穿山甲不强制获取地理位置信息-->
+    <uses-permission android:name="android.permission.ACCESS_FINE_LOCATION" />
+
+    <!-- 如果视频广告使用textureView播放，请务必添加，否则黑屏 -->
+    <uses-permission android:name="android.permission.WAKE_LOCK" />
+
+    <!--demo场景用到的权限，不是必须的-->
+    <!--    <uses-permission android:name="android.permission.RECEIVE_USER_PRESENT" />-->
+    <!--    <uses-permission android:name="android.permission.SYSTEM_ALERT_WINDOW" />-->
+    <!--    <uses-permission android:name="android.permission.EXPAND_STATUS_BAR" />-->
+
+    <!-- 穿山甲3400版本新增：建议添加“query_all_package”权限，穿山甲将通过此权限在Android R系统上判定广告对应的应用是否在用户的app上安装，避免投放错误的广告，以此提高用户的广告体验。若添加此权限，需要在您的用户隐私文档中声明！ -->
+    <uses-permission android:name="android.permission.QUERY_ALL_PACKAGES" />
+
+    <!--oppo推送权限如果应用无透传权限，则不用配置-->
+    <!--    <uses-permission android:name="com.coloros.mcs.permission.RECIEVE_MCS_MESSAGE"/>-->
+    <!--    <uses-permission android:name="com.heytap.mcs.permission.RECIEVE_MCS_MESSAGE"/>-->
+
+    <!--    <uses-permission android:name="android.permission.INTERNET"/>-->
+    <!--        <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE"/>-->
+    <!--        <uses-permission android:name="android.permission.ACCESS_WIFI_STATE"/>-->
+    <!--    android:name="org.pinball.games.MyApplication" android:taskAffinity=""
+    <activity
+                android:name="org.pinball.games.wxapi.WXEntryActivity"
+                android:label="@string/app_name"
+                android:theme="@android:style/Theme.Translucent"
+                android:exported="true"
+                android:launchMode="singleTask"
+                android:screenOrientation="portrait">
+            </activity>
+                    android:screenOrientation="portrait"//Only fullscreen opaque activities can request orientation崩溃报错注释测试
+
+        -->
+
+    <application
+        android:name="org.cocos2dx.javascript.MyApplication"
+        android:allowBackup="true"
+        android:icon="@mipmap/ic_launcher"
+        android:label="@string/app_name"
+        android:usesCleartextTraffic="true">
+        <!-- Tell Cocos2dxActivity the name of our .so -->
+        <meta-data
+            android:name="android.app.lib_name"
+            android:value="cocos2djs" />
+        <meta-data
+            android:name="notch.config"
+            android:value="none" />
+        <meta-data
+            android:name="android.max_aspect"
+            android:value="ratio_float" />
+
+        <activity
+            android:name="org.cocos2dx.javascript.AppActivity"
+            android:configChanges="orientation|keyboardHidden|screenSize|screenLayout"
+            android:label="@string/app_name"
+            android:launchMode="singleTask"
+            android:screenOrientation="portrait"
+            android:taskAffinity=""
+            android:theme="@android:style/Theme.NoTitleBar.Fullscreen">
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
+        </activity>
+
+        <activity
+            android:name="org.cocos2dx.javascript.SplashActivity"
+            android:configChanges="keyboard|orientation|screenSize"
+            android:exported="true"
+            android:launchMode="standard"></activity>
+        <activity
+            android:name="org.cocos2dx.javascript.WebActivity"
+            android:configChanges="keyboard|orientation|screenSize"
+            android:exported="true"
+            android:launchMode="standard"></activity>
+
+        <activity
+            android:name=".wxapi.WXEntryActivity"
+            android:exported="true"
+            android:label="@string/app_name"
+            android:launchMode="standard"
+            android:theme="@android:style/Theme.Translucent"></activity>
+
+        <!--自定义熄屏弹出通知窗口 -->
+        <activity
+            android:name="org.cocos2dx.javascript.AlarmActivity"
+            android:excludeFromRecents="true"
+            android:launchMode="singleInstance"
+            android:taskAffinity=""
+            android:theme="@android:style/Theme.Wallpaper.NoTitleBar" />
+        <!--自定义熄屏弹出通知窗口的弹出控制服务 -->
+        <service
+            android:name="org.cocos2dx.javascript.services.RegisterServService"
+            android:enabled="true"
+            android:exported="true" />
+        <!--自定义浮窗控制服务 -->
+        <service
+            android:name="org.cocos2dx.javascript.services.FloatWindowService"
+            android:enabled="true"
+            android:exported="true" />
+        <!--双保活 -->
+        <service
+            android:name="org.cocos2dx.javascript.services.LocalDaemonService"
+            android:enabled="true"
+            android:exported="true" />
+        <service
+            android:name="org.cocos2dx.javascript.services.RemoteDaemonService"
+            android:enabled="true"
+            android:exported="true"
+            android:process=":RemoteProcess" />
+        <!--音频保活 -->
+        <service
+            android:name="org.cocos2dx.javascript.services.AudioDaemonService"
+            android:enabled="true"
+            android:exported="true"
+            android:process=":AudioDaemon" />
+
+
+        <!--广点通配置-->
+        <provider
+            android:name="com.qq.e.comm.GDTFileProvider"
+            android:authorities="${applicationId}.gdt.fileprovider"
+            android:exported="false"
+            android:grantUriPermissions="true">
+            <meta-data
+                android:name="android.support.FILE_PROVIDER_PATHS"
+                android:resource="@xml/gdt_file_path" />
+        </provider>
+        <!--        <activity-->
+        <!--            android:name="com.qq.e.ads.PortraitADActivity"-->
+        <!--            android:screenOrientation="portrait"-->
+        <!--            android:configChanges="keyboard|keyboardHidden|orientation|screenSize" />-->
+        <!--        <activity-->
+        <!--            android:name="com.qq.e.ads.LandscapeADActivity"-->
+        <!--            android:screenOrientation="landscape"-->
+        <!--            android:configChanges="keyboard|keyboardHidden|orientation|screenSize" />-->
+
+        <!--穿山甲广告配置-->
+        <provider
+            android:name="com.bytedance.sdk.openadsdk.TTFileProvider"
+            android:authorities="${applicationId}.TTFileProvider"
+            android:exported="false"
+            android:grantUriPermissions="true">
+            <meta-data
+                android:name="android.support.FILE_PROVIDER_PATHS"
+                android:resource="@xml/file_paths" />
+        </provider>
+        <provider
+            android:name="com.bytedance.sdk.openadsdk.multipro.TTMultiProvider"
+            android:authorities="${applicationId}.TTMultiProvider"
+            android:exported="false" />
+
+
+        <!--        <provider-->
+        <!--            android:name="com.qq.e.comm.GDTFileProvider"-->
+        <!--            android:authorities="${applicationId}.gdt.fileprovider"-->
+        <!--            android:exported="false"-->
+        <!--            android:grantUriPermissions="true">-->
+        <!--            <meta-data-->
+        <!--                android:name="android.support.FILE_PROVIDER_PATHS"-->
+        <!--                android:resource="@xml/gdt_file_path" />-->
+        <!--        </provider>-->
+
+
+        <!--oppo推送服务组件注册如果应用无透传权限，则不用配置-->
+        <!--        <service-->
+        <!--            android:name="com.heytap.msp.push.service.CompatibleDataMessageCallbackService"-->
+
+        <!--            android:permission="com.coloros.mcs.permission.SEND_MCS_MESSAGE">-->
+        <!--            <intent-filter>-->
+        <!--                <action android:name="com.coloros.mcs.action.RECEIVE_MCS_MESSAGE"/>-->
+        <!--            </intent-filter>-->
+        <!--        </service> &lt;!&ndash;兼容Q以下版本&ndash;&gt;-->
+
+        <!--        <service-->
+        <!--            android:name="com.heytap.msp.push.service.DataMessageCallbackService"-->
+
+        <!--            android:permission="com.heytap.mcs.permission.SEND_PUSH_MESSAGE">-->
+
+        <!--            <intent-filter>-->
+        <!--                <action android:name="com.heytap.mcs.action.RECEIVE_MCS_MESSAGE"/>-->
+
+        <!--                <action android:name="com.heytap.msp.push.RECEIVE_MCS_MESSAGE"/>-->
+        <!--            </intent-filter>-->
+        <!--        </service> &lt;!&ndash;兼容Q版本&ndash;&gt;-->
+    </application>
+</manifest>
