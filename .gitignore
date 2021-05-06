@@ -83,3 +83,4 @@ lint/generated/
 lint/outputs/
 lint/tmp/
 # lint/reports/
+frameworks/runtime-src/proj.android-studio/.idea/caches/build_file_checksums.ser
