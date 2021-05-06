@@ -1,5 +1,6 @@
 package org.cocos2dx.javascript.widget;
 
+import android.annotation.SuppressLint;
 import android.content.Context;
 import android.content.Intent;
 import android.util.Log;
@@ -10,7 +11,7 @@ import android.view.ViewConfiguration;
 
 import com.blankj.utilcode.util.SizeUtils;
 
-import org.pinball.games.R;
+import com.bjyt.game.vivo.R;
 
 /**
  * Create by sun on 2020/7/31 5:16 PM
@@ -39,6 +40,7 @@ public class FollowTouchView extends BaseFloatWindow {
             private float mDownY;
             private float mDownX;
 
+            @SuppressLint("ClickableViewAccessibility")
             @Override
             public boolean onTouch(View v, MotionEvent event) {
                 float x = event.getRawX();

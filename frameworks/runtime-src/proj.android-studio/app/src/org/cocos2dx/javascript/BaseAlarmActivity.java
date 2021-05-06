@@ -15,7 +15,7 @@ import android.widget.ImageView;
 import android.widget.TextView;
 import android.widget.Toast;
 
-import org.pinball.games.R;
+import com.bjyt.game.vivo.R;
 
 import org.cocos2dx.javascript.utils.UIUtils;
 

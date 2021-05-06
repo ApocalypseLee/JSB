@@ -6,7 +6,7 @@ import android.view.View;
 
 import org.cocos2dx.javascript.AppActivity;
 import org.cocos2dx.javascript.services.FloatWindowService;
-import org.pinball.games.R;
+import com.bjyt.game.vivo.R;
 
 public class AlarmFloatWindow extends FullScreenTouchAbleFloatWindow  {
     public AlarmFloatWindow(Context context) {

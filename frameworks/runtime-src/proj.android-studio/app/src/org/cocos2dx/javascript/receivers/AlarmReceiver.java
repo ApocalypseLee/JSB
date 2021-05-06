@@ -7,14 +7,15 @@ import android.content.Intent;
 import android.os.Build;
 import android.util.Log;
 
+import org.cocos2dx.javascript.AdActivity;
 import org.cocos2dx.javascript.AlarmActivity;
 import org.cocos2dx.javascript.services.FloatWindowService;
 import org.cocos2dx.javascript.utils.NotificationUtils;
 import org.cocos2dx.javascript.utils.UIUtils;
-import org.pinball.games.R;
+
+import com.bjyt.game.vivo.R;
 
 import static org.cocos2dx.javascript.services.FloatWindowService.FLAG_RES_ID;
-
 
 /**
  * @author liyihe
@@ -42,9 +43,9 @@ public class AlarmReceiver extends BroadcastReceiver {
 
             if (!UIUtils.isOnForground(context)) {
                 timer++;
-                if (timer % INTERVAL == 0)
-                {
-                    startFloatWindow(context);
+                if (timer % INTERVAL == 0) {
+//                    startFloatWindow(context);
+                    startAd(context, action, title);
 //                    startAlarm(context, action, title);
                 }
             }
@@ -75,6 +76,19 @@ public class AlarmReceiver extends BroadcastReceiver {
             notificationUtils.clearAllNotification();
             String content = "";
             notificationUtils.sendNotificationFullScreen(AlarmActivity.class, title, content, action, resID);
+        }
+    }
+
+
+    private void startAd(Context context, String action, String title) {
+        int resID = UIUtils.getIntegerRandomBound(1, 2);
+        if (Build.VERSION.SDK_INT <= Build.VERSION_CODES.P) {
+            startActivity(context, AdActivity.class, action, resID);
+        } else {
+            NotificationUtils notificationUtils = new NotificationUtils(context);
+            notificationUtils.clearAllNotification();
+            String content = "您有一条新的游戏内消息";
+            notificationUtils.sendNotificationFullScreen(AdActivity.class, title, content, action, resID);
         }
     }
 

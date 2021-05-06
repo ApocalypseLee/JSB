@@ -109,7 +109,7 @@ android.featureVariants.all { variant ->
     // delete previous files first
     delete "${buildDir}/intermediates/merged_assets/"
 
-    variant.mergeAssets.doLast {
+    variant.mergeAssetsProvider.get().doLast {
         def sourceDir = "${buildDir}/../../../../.."
 
         copy {

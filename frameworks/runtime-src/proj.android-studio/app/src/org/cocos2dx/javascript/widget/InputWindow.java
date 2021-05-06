@@ -3,7 +3,7 @@ package org.cocos2dx.javascript.widget;
 import android.content.Context;
 import android.view.View;
 
-import org.pinball.games.R;
+import com.bjyt.game.vivo.R;
 
 /**
  * @author sun on 2018/12/27.

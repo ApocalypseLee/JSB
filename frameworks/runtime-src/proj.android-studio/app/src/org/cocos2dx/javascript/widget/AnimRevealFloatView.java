@@ -13,7 +13,7 @@ import android.widget.Toast;
 
 import com.blankj.utilcode.util.SizeUtils;
 
-import org.pinball.games.R;
+import com.bjyt.game.vivo.R;
 
 public class AnimRevealFloatView extends BaseFloatWindow {
 

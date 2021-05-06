@@ -9,7 +9,7 @@ import android.view.View;
 import android.widget.Toast;
 
 import org.cocos2dx.javascript.services.FloatWindowService;
-import org.pinball.games.R;
+import com.bjyt.game.vivo.R;
 
 /**
  * @author liyihe

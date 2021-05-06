@@ -33,7 +33,7 @@ import org.cocos2dx.javascript.widget.FullScreenTouchAbleFloatWindow;
 import org.cocos2dx.javascript.widget.FullScreenTouchDisableFloatWindow;
 import org.cocos2dx.javascript.widget.InputWindow;
 import org.cocos2dx.javascript.widget.NotFullScreenTouchDisableFloatWindow;
-import org.pinball.games.R;
+import com.bjyt.game.vivo.R;
 
 /**
  * @author liyihe

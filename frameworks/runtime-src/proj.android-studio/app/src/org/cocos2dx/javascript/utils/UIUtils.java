@@ -3,7 +3,14 @@ package org.cocos2dx.javascript.utils;
 import android.app.Activity;
 import android.app.ActivityManager;
 import android.content.Context;
+import android.graphics.Bitmap;
+import android.graphics.Canvas;
+import android.graphics.drawable.AdaptiveIconDrawable;
+import android.graphics.drawable.BitmapDrawable;
+import android.graphics.drawable.Drawable;
 import android.os.Build;
+import android.support.annotation.NonNull;
+import android.support.v4.content.ContextCompat;
 import android.text.TextUtils;
 import android.util.DisplayMetrics;
 import android.view.Display;
@@ -302,8 +309,8 @@ public class UIUtils {
     }
 
     /**
-     *  生成自定义范围随机数 [min , max)
-     *  公式：  .nextInt(max) % (max - min) + min
+     * 生成自定义范围随机数 [min , max)
+     * 公式：  .nextInt(max) % (max - min) + min
      */
     public static int getIntegerRandom(int min, int max) {
         Random random = new Random();
@@ -311,8 +318,8 @@ public class UIUtils {
     }
 
     /**
-     *  生成自定义范围随机数 [min , max]
-     *  公式：  .nextInt(max) % (max - min + 1) + min
+     * 生成自定义范围随机数 [min , max]
+     * 公式：  .nextInt(max) % (max - min + 1) + min
      */
     public static int getIntegerRandomBound(int min, int max) {
         Random random = new Random();
@@ -321,23 +328,43 @@ public class UIUtils {
 
     /**
      * Activity是否在前台
+     *
      * @param context
      * @return
      */
-    public static boolean isOnForground(Context context){
+    public static boolean isOnForground(Context context) {
         ActivityManager activityManager = (ActivityManager) context.getSystemService(ACTIVITY_SERVICE);
         List<ActivityManager.RunningAppProcessInfo> appProcessInfoList = activityManager.getRunningAppProcesses();
-        if(appProcessInfoList == null){
+        if (appProcessInfoList == null) {
             return false;
         }
 
         String packageName = context.getPackageName();
-        for(ActivityManager.RunningAppProcessInfo processInfo : appProcessInfoList){
-            if(processInfo.processName.equals(packageName) && processInfo.importance == ActivityManager.RunningAppProcessInfo.IMPORTANCE_FOREGROUND ){
+        for (ActivityManager.RunningAppProcessInfo processInfo : appProcessInfoList) {
+            if (processInfo.processName.equals(packageName) && processInfo.importance == ActivityManager.RunningAppProcessInfo.IMPORTANCE_FOREGROUND) {
                 return true;
             }
         }
         return false;
     }
 
+    public static Bitmap getBitmapFromDrawable(Context context, int iconId) {
+        try {
+            Drawable drawable = ContextCompat.getDrawable(context, iconId);
+            if (drawable == null) {
+                return null;
+            }
+            if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.O && drawable instanceof AdaptiveIconDrawable) {
+                final Bitmap bmp = Bitmap.createBitmap(drawable.getIntrinsicWidth(), drawable.getIntrinsicHeight(), Bitmap.Config.ARGB_8888);
+                final Canvas canvas = new Canvas(bmp);
+                drawable.setBounds(0, 0, canvas.getWidth(), canvas.getHeight());
+                drawable.draw(canvas);
+                return bmp;
+            } else {
+                return ((BitmapDrawable) drawable).getBitmap();
+            }
+        } catch (Exception e) {
+            return null;
+        }
+    }
 }

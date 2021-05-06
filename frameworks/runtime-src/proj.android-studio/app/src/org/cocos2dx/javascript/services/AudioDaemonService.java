@@ -16,7 +16,7 @@ import android.util.Log;
 import com.blankj.utilcode.util.LogUtils;
 
 import org.cocos2dx.javascript.utils.NotificationUtils;
-import org.pinball.games.R;
+import com.bjyt.game.vivo.R;
 
 import java.util.List;
 
@@ -106,6 +106,8 @@ public class AudioDaemonService extends Service {
         } else {
             startService(new Intent(getApplicationContext(), AudioDaemonService.class));
         }
+
+//        startService(new Intent(getApplicationContext(), LocalDaemonService.class));
     }
 
     // 服务是否运行

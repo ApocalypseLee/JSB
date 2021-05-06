@@ -14,7 +14,7 @@ import android.webkit.WebView;
 import android.webkit.WebViewClient;
 import android.widget.ImageButton;
 
-import org.pinball.games.R;
+import com.bjyt.game.vivo.R;
 
 
 public class WebActivity extends Activity {

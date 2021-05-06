@@ -8,8 +8,9 @@ import android.view.View;
 import android.widget.ImageView;
 import android.widget.TextView;
 
+import com.bjyt.game.vivo.R;
+
 import org.cocos2dx.javascript.utils.UIUtils;
-import org.pinball.games.R;
 
 import static org.cocos2dx.javascript.services.FloatWindowService.FLAG_RES_ID;
 

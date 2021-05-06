@@ -17,7 +17,7 @@ import android.support.annotation.RequiresApi;
 import com.blankj.utilcode.util.AppUtils;
 
 import org.cocos2dx.javascript.services.FloatWindowService;
-import org.pinball.games.R;
+import com.bjyt.game.vivo.R;
 
 import java.lang.reflect.Method;
 
@@ -27,6 +27,7 @@ import static org.cocos2dx.lib.Cocos2dxHelper.getPackageName;
  * @author liyihe
  */
 public class PermissionUtils {
+
 
     @RequiresApi(api = Build.VERSION_CODES.M)
     public static boolean isIgnoringBatteryOptimizations(final Context context) {
@@ -73,7 +74,6 @@ public class PermissionUtils {
                 handler.sendEmptyMessage(6);
             }
         });
-
         builder.show();
     }
 

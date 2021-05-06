@@ -31,6 +31,7 @@
 -keep class okio.** { *; }
 -dontwarn okio.**
 
+
 # Proguard Android Webivew for release. you can comment if you are not using a webview
 -keep public class android.net.http.SslError
 -keep public class android.webkit.WebViewClient
@@ -43,11 +44,22 @@
 -keep public class com.anysdk.** { *; }
 -dontwarn com.anysdk.**
 
--keep class com.bytedance.sdk.openadsdk.** { *; }
+-keep class com.vivo.*.** { *; }
+-dontwarn com.bytedance.article.common.nativecrash.NativeCrashInit
+-keep class com.bytedance.sdk.openadsdk.** {*;}
 -keep public interface com.bytedance.sdk.openadsdk.downloadnew.** {*;}
 -keep class com.pgl.sys.ces.* {*;}
--keep class com.tencent.mm.opensdk.** {*;}
-
--keep class com.tencent.wxop.** { *;}
-
--keep class com.tencent.mm.sdk.** { *;}
+-keep class com.qq.e.** {
+ public protected *;
+}
+-keep class android.support.v4.**{
+ public *;
+}
+-keep class android.support.v7.**{
+ public *;
+}
+-dontwarn com.vivo.secboxsdk.**
+-keep class com.vivo.secboxsdk.SecBoxCipherException { *; }
+-keep class com.vivo.secboxsdk.jni.SecBoxNative { *; }
+-keep class com.vivo.secboxsdk.BuildConfig { *; }
+-keep class com.bun.miitmdid.core.** {*;}

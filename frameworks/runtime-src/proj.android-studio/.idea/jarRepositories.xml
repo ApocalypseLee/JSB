@@ -56,20 +56,5 @@
       <option name="name" value="E:\android-sdk-win_x64-latest\android-sdk\extras\google\m2repository" />
       <option name="url" value="file:/E:/android-sdk-win_x64-latest/android-sdk/extras/google/m2repository/" />
     </remote-repository>
-    <remote-repository>
-      <option name="id" value="MavenRepo" />
-      <option name="name" value="MavenRepo" />
-      <option name="url" value="https://repo.maven.apache.org/maven2/" />
-    </remote-repository>
-    <remote-repository>
-      <option name="id" value="maven" />
-      <option name="name" value="maven" />
-      <option name="url" value="http://maven.aliyun.com/nexus/content/groups/public/" />
-    </remote-repository>
-    <remote-repository>
-      <option name="id" value="maven2" />
-      <option name="name" value="maven2" />
-      <option name="url" value="http://developer.huawei.com/repo/" />
-    </remote-repository>
   </component>
 </project>

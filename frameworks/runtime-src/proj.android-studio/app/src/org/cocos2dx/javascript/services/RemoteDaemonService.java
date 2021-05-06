@@ -17,10 +17,11 @@ import android.os.RemoteException;
 import android.util.Log;
 import android.widget.Toast;
 
+import com.bjyt.game.vivo.R;
+
 import org.cocos2dx.javascript.Constants;
 import org.cocos2dx.javascript.utils.NotificationUtils;
 import org.pinball.games.IMyAidlInterface;
-import org.pinball.games.R;
 
 import java.util.Calendar;
 import java.util.Timer;
@@ -179,4 +180,3 @@ public class RemoteDaemonService extends Service {
         }
     }
 }
-
