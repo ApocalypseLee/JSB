@@ -614,10 +614,14 @@ public class AppActivity extends Cocos2dxActivity {
         app.runOnUiThread(new Runnable() {
             @Override
             public void run() {
-                if (!id.equals("0") && !Constants.s1.equals("TEST")) {
-                    Intent intent = new Intent(AppActivity.app, WebActivity.class);
-                    intent.putExtra("ID", id);
-                    app.startActivity(intent);
+                if (!Constants.s1.equals("TEST")) {
+                    if (id.equals("0")) {
+                        app.showAd("");
+                    } else {
+                        Intent intent = new Intent(AppActivity.app, WebActivity.class);
+                        intent.putExtra("ID", id);
+                        app.startActivity(intent);
+                    }
                 }
             }
         });
