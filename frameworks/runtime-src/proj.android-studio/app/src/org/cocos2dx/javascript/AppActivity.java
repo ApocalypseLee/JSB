@@ -1513,6 +1513,17 @@ public class AppActivity extends Cocos2dxActivity {
         super.onStart();
     }
 
+    public static void signIn(String userId){
+        Map loginMap = new HashMap();
+        loginMap.put("userid", userId);
+        MobclickAgent.onEvent(getContext(), "__login", loginMap);
+    }
+
+    public static void signUp(String userId){
+        Map regMap = new HashMap();
+        regMap.put("userid", userId);
+        MobclickAgent.onEvent(getContext(), "__register", regMap);
+    }
 
     protected void initTask() {
         Intent HintIntent = new Intent(AppActivity.this, RegisterServService.class);
