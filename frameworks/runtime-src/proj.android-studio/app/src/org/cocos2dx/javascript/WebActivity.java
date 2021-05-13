@@ -66,7 +66,7 @@ public class WebActivity extends Activity {
                 URL = ID;
             }
         } else {
-            URL = "https://engine.tuicoco.com/index/activity?appKey=4WDkE6cqDnVH2iCYFqGnXB9RTTb7&adslotId=381668&tu_a1=__IMEI__&tu_a2=__IMEI2__&tu_a3=__MUID__&tu_b1=__IDFA__&tu_b2=__IDFA2__&tu_c1=__OAID__";
+            URL = "https://i.iwanbei.cn/activities?appKey=589d000a827049b99922720eb54c25c9&appEntrance=2&business=money";
         }
         System.out.println(ID + "::互动广告厂商：：" + URL);
         webView.loadUrl(URL);
