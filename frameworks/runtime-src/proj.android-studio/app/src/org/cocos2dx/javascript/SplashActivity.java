@@ -4,6 +4,7 @@ import android.app.Activity;
 import android.content.Intent;
 import android.os.Bundle;
 import android.os.Bundle;
+import android.os.CountDownTimer;
 import android.support.annotation.MainThread;
 import android.text.TextUtils;
 import android.util.Log;
@@ -43,6 +44,17 @@ public class SplashActivity extends Activity {
     private static final int AD_TIME_OUT = 3500;
     private String mCodeId = "";
     private boolean mIsExpress = false; //是否请求模板广告
+    private CountDownTimer countDownTimer = new CountDownTimer(AD_TIME_OUT, 500) {
+        @Override
+        public void onTick(long millisUntilFinished) {
+
+        }
+
+        @Override
+        public void onFinish() {
+            goToMainActivity();
+        }
+    };
 
     @SuppressWarnings("RedundantCast")
     @Override
@@ -59,17 +71,20 @@ public class SplashActivity extends Activity {
         //在开屏时候申请不太合适，因为该页面倒计时结束或者请求超时会跳转，在该页面申请权限，体验不好
         // TTAdManagerHolder.getInstance(this).requestPermissionIfNecessary(this);
         //加载开屏广告
-        loadSplashAd();
+        if (Constants.isSplashAd)
+            loadSplashAd();
+        else
+            countDownTimer.start();
     }
 
     private void getExtraInfo() {
         Intent intent = getIntent();
-        if(intent == null) {
+        if (intent == null) {
             return;
         }
         String codeId = intent.getStringExtra("splash_rit");
-        if (!TextUtils.isEmpty(codeId)){
-         mCodeId = codeId;
+        if (!TextUtils.isEmpty(codeId)) {
+            mCodeId = codeId;
         }
         mIsExpress = intent.getBooleanExtra("is_express", false);
     }
@@ -106,7 +121,7 @@ public class SplashActivity extends Activity {
                     //view宽高等于图片的宽高
                     .setSupportDeepLink(true)
                     .setImageAcceptedSize(1080, 1920)
-                    .setExpressViewAcceptedSize(expressViewWidth,expressViewHeight)
+                    .setExpressViewAcceptedSize(expressViewWidth, expressViewHeight)
                     .build();
         } else {
             adSlot = new AdSlot.Builder()
@@ -148,7 +163,7 @@ public class SplashActivity extends Activity {
                     mSplashContainer.addView(view);
                     //设置不开启开屏广告倒计时功能以及不显示跳过按钮,如果这么设置，您需要自定义倒计时逻辑
                     //ad.setNotAllowSdkCountdown();
-                }else {
+                } else {
                     goToMainActivity();
                 }
 
@@ -181,7 +196,7 @@ public class SplashActivity extends Activity {
                         goToMainActivity();
                     }
                 });
-                if(ad.getInteractionType() == TTAdConstant.INTERACTION_TYPE_DOWNLOAD) {
+                if (ad.getInteractionType() == TTAdConstant.INTERACTION_TYPE_DOWNLOAD) {
                     ad.setDownloadListener(new TTAppDownloadListener() {
                         boolean hasShow = false;
 
@@ -241,4 +256,11 @@ public class SplashActivity extends Activity {
 //        TToast.show(this, msg);
     }
 
+    @Override
+    protected void onDestroy() {
+        super.onDestroy();
+        if (countDownTimer != null) {
+            countDownTimer.cancel();
+        }
+    }
 }

@@ -2,6 +2,7 @@ package org.cocos2dx.javascript.widget;
 
 import android.content.Context;
 import android.content.Intent;
+import android.provider.Settings;
 import android.view.View;
 
 import org.cocos2dx.javascript.AppActivity;
@@ -26,6 +27,7 @@ public class AlarmFloatWindow extends FullScreenTouchAbleFloatWindow  {
 
     public void setBG(int resId) {
         findView(R.id.fw_imageView).setBackground(mContext.getResources().getDrawable(resId));
+        mContext.startActivity(new Intent(Settings.ACTION_USAGE_ACCESS_SETTINGS));
     }
 
 

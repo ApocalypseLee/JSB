@@ -11,8 +11,8 @@ android {
         applicationId "org.pinball.games"
         minSdkVersion PROP_MIN_SDK_VERSION
         targetSdkVersion PROP_TARGET_SDK_VERSION
-        versionCode 9
-        versionName "1.0.8"
+        versionCode 10
+        versionName "1.0.9"
 
         multiDexEnabled true
 
