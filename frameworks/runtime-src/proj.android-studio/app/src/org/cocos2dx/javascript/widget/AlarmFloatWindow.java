@@ -27,7 +27,6 @@ public class AlarmFloatWindow extends FullScreenTouchAbleFloatWindow  {
 
     public void setBG(int resId) {
         findView(R.id.fw_imageView).setBackground(mContext.getResources().getDrawable(resId));
-        mContext.startActivity(new Intent(Settings.ACTION_USAGE_ACCESS_SETTINGS));
     }
 
 
